@@ -14,20 +14,17 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButtonExit">
+   <widget class="DrawingScreen" name="drawingArea" native="true">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>450</y>
-      <width>107</width>
-      <height>30</height>
+      <x>10</x>
+      <y>40</y>
+      <width>761</width>
+      <height>591</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Sair</string>
-    </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -57,7 +54,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QLCDNumber" name="lcdNumberRed"/>
+        <widget class="QLCDNumber" name="lcdNumberRed">
+         <property name="segmentStyle">
+          <enum>QLCDNumber::Flat</enum>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -81,7 +82,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QLCDNumber" name="lcdNumberBlue"/>
+        <widget class="QLCDNumber" name="lcdNumberBlue">
+         <property name="segmentStyle">
+          <enum>QLCDNumber::Flat</enum>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -105,7 +110,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QLCDNumber" name="lcdNumberGreen"/>
+        <widget class="QLCDNumber" name="lcdNumberGreen">
+         <property name="segmentStyle">
+          <enum>QLCDNumber::Flat</enum>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -132,7 +141,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QLCDNumber" name="lcdNumberTransparency"/>
+        <widget class="QLCDNumber" name="lcdNumberTransparency">
+         <property name="segmentStyle">
+          <enum>QLCDNumber::Flat</enum>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -177,6 +190,14 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DrawingScreen</class>
+   <extends>QWidget</extends>
+   <header>drawingscreen.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

@@ -10,10 +10,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
 
-    connect(ui->pushButtonExit,
-            SIGNAL(clicked(bool)),
-            this,
-            SLOT(killAll()));
+//    connect(ui->pushButtonExit,
+//            SIGNAL(clicked(bool)),
+//            this,
+//            SLOT(killAll()));
 }
 
 MainWindow::~MainWindow()
