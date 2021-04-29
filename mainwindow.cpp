@@ -9,6 +9,26 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    connect(ui->horizontalSliderDimension,
+            SIGNAL(valueChanged(int)),
+            ui->drawingArea,
+            SLOT(setSize(int)));
+
+    connect(ui->horizontalSliderRed,
+            SIGNAL(valueChanged(int)),
+            ui->drawingArea,
+            SLOT(setRed(int)));
+
+    connect(ui->horizontalSliderGreen,
+            SIGNAL(valueChanged(int)),
+            ui->drawingArea,
+            SLOT(setGreen(int)));
+
+    connect(ui->horizontalSliderBlue,
+            SIGNAL(valueChanged(int)),
+            ui->drawingArea,
+            SLOT(setBlue(int)));
+
 
 //    connect(ui->pushButtonExit,
 //            SIGNAL(clicked(bool)),

@@ -12,9 +12,9 @@ int x, y, z;
 
 Sculptor::Sculptor(int _nx, int _ny, int _nz)
 {
-     nx = _nx;
-     ny = _ny;
-     nz = _nz;
+     nx = _nx = 10;
+     ny = _ny = 10;
+     nz = _nz = 10;
      int i, j, k;
 
      //alocando memória para o espaço 3d
