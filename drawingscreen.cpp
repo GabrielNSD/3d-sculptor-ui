@@ -76,13 +76,45 @@ void DrawingScreen::loadMatrix(vector<vector<Voxel> > m)
     repaint();
 }
 
-void DrawingScreen::drawGeometry(int _drawingGeometry, int posX, int posY)
+void DrawingScreen::drawGeometry(int _drawingGeometry, int _posX, int _posY, int _posZ)
 {
     switch (_drawingGeometry) {
-        case 0:
+    case 0:
         m->setColor(r,g,b,a);
-        //m->putVoxel();
+        m->putVoxel(_posX, _posY, _posZ);
         break;
+
+    case 1:
+        m->cutVoxel(_posX, _posY, _posZ);
+        break;
+
+    case 2:
+        m->setColor(r,g,b,a);
+        m->putBox(_posX-(lenghtX/2), _posX+(lenghtX/2), posY-(lenghtY/2), posY+(lenghtY/2), posZ-(lenghtZ/2), posZ+(lenghtZ/2));
+        break;
+
+    case 3:
+        m->cutBox(_posX-(lenghtX/2), _posX+(lenghtX/2), posY-(lenghtY/2), posY+(lenghtY/2), posZ-(lenghtZ/2), posZ+(lenghtZ/2));
+        break;
+
+    case 4:
+        m->setColor(r,g,b,a);
+        m->putSphere(_posX,_posY,_posZ, radius);
+        break;
+
+    case 5:
+        m->cutSphere(_posX,_posY,_posZ, radius);
+        break;
+
+    case 6:
+        m->setColor(r,g,b,a);
+        m->putEllipsoid(_posX, _posY, _posZ, radiusX, radiusY, radiusZ);
+        break;
+
+    case 7:
+        m->cutEllipsoid(_posX, _posY, _posZ, radiusX, radiusY, radiusZ);
+        break;
+
     }
 }
 
@@ -105,6 +137,11 @@ void DrawingScreen::setGreen(int _g)
 void DrawingScreen::setBlue(int _b)
 {
     b = _b;
+}
+
+void DrawingScreen::setZ(int _posZ)
+{
+    posZ = _posZ;
 }
 
 void DrawingScreen::putVoxelSelector(){

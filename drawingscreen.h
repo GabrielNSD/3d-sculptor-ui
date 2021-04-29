@@ -19,10 +19,19 @@ private:
     int borderv;
     int borderh;
 
+    int radius; //sphere radius
+    int radiusX;
+    int radiusY;
+    int radiusZ;
+
     float r,g,b,a=1;
 
     int drawingGeometry; // 0/1= put/cut Voxel, 2/3 = put/cut box, 4/5 = put/cut sphere, 6/7 = Ellipsoid
     bool pressed;
+
+    int posX, posY,posZ; //click positions and Z slider
+
+    int lenghtX, lenghtY, lenghtZ; //box lengths
 
     Sculptor *m;
 
@@ -38,13 +47,15 @@ public:
 
     void loadMatrix(vector <vector<Voxel>> m);
 
-    void drawGeometry(int _drawingGeometry, int posX, int posY);
+    void drawGeometry(int _drawingGeometry, int _posX, int _posY, int _posZ);
+
 
  public slots:
     void setSize(int newSize);
     void setRed(int _r);
     void setGreen(int _g);
     void setBlue(int _b);
+    void setZ(int _posZ);
 
     void putVoxelSelector();
     void cutVoxelSelector();

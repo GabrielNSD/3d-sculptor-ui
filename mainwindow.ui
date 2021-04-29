@@ -186,6 +186,9 @@
        <property name="segmentStyle">
         <enum>QLCDNumber::Flat</enum>
        </property>
+       <property name="intValue" stdset="0">
+        <number>10</number>
+       </property>
       </widget>
      </item>
     </layout>
