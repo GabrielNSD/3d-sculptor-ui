@@ -12,9 +12,9 @@ class Sculptor
 {
 protected:
     Voxel ***v;
-    int nx;
-    int ny;
-    int nz;
+    int nx =10;
+    int ny = 10;
+    int nz = 10;
     float r;
     float g;
     float b;
@@ -171,7 +171,20 @@ public:
          *
          * @param filename nome do arquivo de destino
          */
+
+        void limpaVoxels();
+
         void writeOFF(char *filename);
+
+        int isItOn(int i, int j, int k);
+
+        int isOn(int _i, int _j, int _k);
+
+        int getRed(int _i, int _j, int _k);
+
+        int getGreen(int _i, int _j, int _k);
+
+        int getBlue(int _i, int _j, int _k);
 };
 
 #endif // SCULPTOR_H

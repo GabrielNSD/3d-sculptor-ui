@@ -1,9 +1,11 @@
 #include "sculptor.h"
+#include "voxel.h"
 #include <stdlib.h>
 #include <iostream>
 #include <fstream>
 #include <iomanip>
 #include <cmath>
+#include <queue>
 
 using namespace std;
 
@@ -12,9 +14,9 @@ int x, y, z;
 
 Sculptor::Sculptor(int _nx, int _ny, int _nz)
 {
-     nx = _nx = 10;
-     ny = _ny = 10;
-     nz = _nz = 10;
+     nx = _nx;
+     ny = _ny;
+     nz = _nz;
      int i, j, k;
 
      //alocando memória para o espaço 3d
@@ -29,14 +31,6 @@ Sculptor::Sculptor(int _nx, int _ny, int _nz)
      {
        v[0][i] = v[0][i - 1] + nz;
      }
-     /* for (i = 0; i < _ny; i++)
-     {
-       v[i] = new Voxel *[ny];
-       for (j = 0; j < _nz; j++)
-       {
-         v[i][j] = new Voxel[nz];
-       }
-     } */
 
      for (i = 0; i < _nx; i++)
      {
@@ -189,9 +183,48 @@ void Sculptor::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int r
   }
 }
 
+void Sculptor::limpaVoxels(void)
+{
+  queue<int> q;
+  int lx, ly, lz;
+  for (x = 1; x < nx - 1; x++)
+  {
+    for (y = 1; y < ny - 1; y++)
+    {
+      for (z = 1; z < nz - 1; z++)
+      {
+        if ((v[x][y][z].isOn == true) &&
+            (v[x + 1][y][z].isOn == true) &&
+            (v[x - 1][y][z].isOn == true) &&
+            (v[x][y + 1][z].isOn == true) &&
+            (v[x][y - 1][z].isOn == true) &&
+            (v[x][y][z + 1].isOn == true) &&
+            (v[x][y][z - 1].isOn == true))
+        {
+          q.push(x);
+          q.push(y);
+          q.push(z);
+        }
+      }
+    }
+  }
+
+  while (!q.empty())
+  {
+    lx = q.front();
+    q.pop();
+    ly = q.front();
+    q.pop();
+    lz = q.front();
+    q.pop();
+    v[lx][ly][lz].isOn = false;
+  }
+}
+
 
 void Sculptor::writeOFF(char *filename)
 {
+    limpaVoxels();
   //contar quantos voxels são verdadeiros
   float lado = 0.5;
   int voxelsOn = 0;
@@ -327,4 +360,37 @@ void Sculptor::writeOFF(char *filename)
   }
 
   f.close();
+}
+
+int Sculptor::isItOn(int i, int j, int k)
+{
+    if(v[i][j][k].isOn == true) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+int Sculptor::isOn(int i, int j, int k)
+{
+    if(v[i][j][k].isOn == true){
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+int Sculptor::getRed(int _i, int _j, int _k)
+{
+    return v[_i][_j][_k].r*255;
+}
+
+int Sculptor::getGreen(int _i, int _j, int _k)
+{
+    return v[_i][_j][_k].g*255;
+}
+
+int Sculptor::getBlue(int _i, int _j, int _k)
+{
+    return v[_i][_j][_k].b*255;
 }

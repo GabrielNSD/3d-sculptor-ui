@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QString>
+#include "dialogsave.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,8 +17,13 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    DialogSave d;
+    char* fileNameChar;
+
 public slots:
     void killAll();
+    void openDialogSave(void);
+    void saveFile(char* filename);
 
 private:
     Ui::MainWindow *ui;
