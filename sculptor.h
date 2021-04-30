@@ -172,17 +172,37 @@ public:
          * @param filename nome do arquivo de destino
          */
 
-        void limpaVoxels();
 
         void writeOFF(char *filename);
 
-        int isItOn(int i, int j, int k);
+        /** @brief
+         *
+         * Limpa os voxels que não estão sendo exibidos
+         *
+         */
+        void limpaVoxels();
+
+        /** @brief
+         * Retorna se o voxel está ativado na posicao indicada
+         */
 
         int isOn(int _i, int _j, int _k);
 
+        /** @brief
+         * Retorna o valor da cor vermelha do voxel na posicao indicada
+         */
+
         int getRed(int _i, int _j, int _k);
 
+        /** @brief
+         * Retorna o valor da cor verde do voxel na posicao indicada
+         */
+
         int getGreen(int _i, int _j, int _k);
+
+        /** @brief
+         * Retorna o valor da cor azul do voxel na posicao indicada
+         */
 
         int getBlue(int _i, int _j, int _k);
 };

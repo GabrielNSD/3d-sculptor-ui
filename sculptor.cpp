@@ -362,14 +362,6 @@ void Sculptor::writeOFF(char *filename)
   f.close();
 }
 
-int Sculptor::isItOn(int i, int j, int k)
-{
-    if(v[i][j][k].isOn == true) {
-        return 1;
-    } else {
-        return 0;
-    }
-}
 
 int Sculptor::isOn(int i, int j, int k)
 {
